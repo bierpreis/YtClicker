@@ -6,14 +6,34 @@ import javax.swing.*;
 
 public class Second {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        JFrame mainWindow = new MainWindow();
+        MainWindow mainWindow = new MainWindow();
+
+        while (!mainWindow.askIfStart())
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        String ytLink = mainWindow.getLink();
+
+        int requestedCounter = mainWindow.getCounter();
+
+
         System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver");
 
-        WebDriver driver = new FirefoxDriver();
 
-        driver.get("https://www.youtube.com/watch?v=JGHWVAN_yQg");
+        for (int iterationCounter = 0; iterationCounter < requestedCounter; iterationCounter++) {
+            WebDriver driver = new FirefoxDriver();
+            driver.get(ytLink);
 
+            driver.close();
+
+        }
     }
+
+
 }
+

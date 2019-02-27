@@ -4,7 +4,12 @@ import javax.swing.*;
 
 public class MainWindow extends JFrame {
 
-    public MainWindow(){
+    private boolean shouldStart = false;
+
+    LinkInputField linkInputField;
+    CounterInputField counterInputField;
+
+    public MainWindow() {
         setTitle("N1 YT Clicker");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 
@@ -17,13 +22,11 @@ public class MainWindow extends JFrame {
         JLabel counterLabel = new JLabel("iterations");
 
 
-
-
         counterPanel.add(counterLabel);
-        counterPanel.add(new CounterInputField());
+        counterPanel.add(counterInputField = new CounterInputField());
         linkDescriptionPanel.add(linkInputLabel);
         startPanel.add(new StartButton());
-        linkInputPanel.add(new LinkInputField());
+        linkInputPanel.add(linkInputField = new LinkInputField());
 
         add(startPanel);
         add(counterPanel);
@@ -34,5 +37,17 @@ public class MainWindow extends JFrame {
         pack();
 
         setVisible(true);
+    }
+
+    public boolean askIfStart() {
+        return shouldStart;
+    }
+
+    public String getLink() {
+        return linkInputField.getText();
+    }
+
+    public int getCounter() {
+        return Integer.getInteger(counterInputField.getText());
     }
 }
