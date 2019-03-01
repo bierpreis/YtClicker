@@ -1,5 +1,8 @@
 package gui;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
@@ -25,7 +28,7 @@ public class MainWindow extends JFrame {
         counterPanel.add(counterLabel);
         counterPanel.add(counterInputField = new CounterInputField());
         linkDescriptionPanel.add(linkInputLabel);
-        startPanel.add(new StartButton());
+        startPanel.add(new StartButton(this));
         linkInputPanel.add(linkInputField = new LinkInputField());
 
         add(startPanel);
@@ -48,6 +51,29 @@ public class MainWindow extends JFrame {
     }
 
     public int getCounter() {
-        return Integer.getInteger(counterInputField.getText());
+        System.out.println("iterations returned");
+        return counterInputField.getIterations();
     }
+
+    public void startClicking(){
+         new ClickIteration( counterInputField.getIterations(),linkInputField.getText());
+    }
+
+    public class ClickIteration {
+
+
+
+
+        public ClickIteration(int requesdedIterations, String link){
+            for (int iterationCounter = 0; iterationCounter < requesdedIterations; iterationCounter++) {
+                System.out.println("iteration: " + iterationCounter);
+                WebDriver driver = new FirefoxDriver();
+                driver.get(link);
+
+                driver.close();
+                System.out.println("iteration finidhed");
+            }
+        }
+    }
+
 }

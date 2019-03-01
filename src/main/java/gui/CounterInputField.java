@@ -4,8 +4,15 @@ import javax.swing.*;
 
 public class CounterInputField extends JTextField {
 
+    int iterations = 1;
+
     public CounterInputField(){
-        setText("003");
+        setColumns(3);
+        setText(Integer.toString(iterations));
         setVisible(true);
+    }
+
+    public int getIterations(){
+        return Integer.parseInt(getText());
     }
 }
