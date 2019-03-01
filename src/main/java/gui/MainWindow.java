@@ -20,19 +20,25 @@ public class MainWindow extends JFrame {
         JPanel linkDescriptionPanel = new JPanel();
         JPanel linkInputPanel = new JPanel();
         JPanel counterPanel = new JPanel();
+        JPanel timeInputPanel = new JPanel();
 
         JLabel linkInputLabel = new JLabel("put link here:");
         JLabel counterLabel = new JLabel("iterations");
+        JLabel timeInputLabel = new JLabel("time in seconds");
 
 
         counterPanel.add(counterLabel);
         counterPanel.add(counterInputField = new CounterInputField());
+
+        timeInputPanel.add(timeInputLabel);
+        timeInputPanel.add(new TimeInputField());
         linkDescriptionPanel.add(linkInputLabel);
         startPanel.add(new StartButton(this));
         linkInputPanel.add(linkInputField = new LinkInputField());
 
         add(startPanel);
         add(counterPanel);
+        add(timeInputPanel);
         add(linkDescriptionPanel);
         add(linkInputPanel);
 
@@ -55,21 +61,23 @@ public class MainWindow extends JFrame {
         return counterInputField.getIterations();
     }
 
-    public void startClicking(){
-         new ClickIteration( counterInputField.getIterations(),linkInputField.getText());
+    public void startClicking() {
+        new ClickIteration(counterInputField.getIterations(), linkInputField.getText());
     }
 
     public class ClickIteration {
 
 
-
-
-        public ClickIteration(int requesdedIterations, String link){
+        public ClickIteration(int requesdedIterations, String link) {
             for (int iterationCounter = 0; iterationCounter < requesdedIterations; iterationCounter++) {
                 System.out.println("iteration: " + iterationCounter);
                 WebDriver driver = new FirefoxDriver();
                 driver.get(link);
-
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 driver.close();
                 System.out.println("iteration finidhed");
             }
