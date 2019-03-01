@@ -1,10 +1,8 @@
 import gui.MainWindow;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import javax.swing.*;
 
 public class Second {
+
+    //todo: rename
 
     public static void main(String[] args) {
 
