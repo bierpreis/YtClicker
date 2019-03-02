@@ -1,6 +1,6 @@
 import gui.MainWindow;
 
-public class Second {
+public class Main {
 
     //todo: rename
 
