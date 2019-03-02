@@ -34,13 +34,12 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -63,20 +62,9 @@
                     </archive>
                 </configuration>
             </plugin>
+
         </plugins>
 
-        <resources>
-
-            <resource>
-                <directory>src/test/resources</directory>
-                <includes>
-                    <include>geckodriver</include>
-                </includes>
-                <!-- relative to target/classes
-                     i.e. ${project.build.outputDirectory} -->
-                <targetPath>target/src/test/resources</targetPath>
-            </resource>
-        </resources>
     </build>
 
 </project>
