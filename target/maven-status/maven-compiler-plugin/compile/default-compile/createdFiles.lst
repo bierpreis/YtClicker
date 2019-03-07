@@ -7,5 +7,6 @@ gui/MainWindow.class
 Main.class
 gui/LinkInputField.class
 gui/WaitTimeInputField.class
+gui/GeckoFileChooser.class
 gui/StartButton$1.class
 gui/CounterInputField.class

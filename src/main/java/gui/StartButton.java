@@ -1,6 +1,5 @@
 package gui;
 
-import org.openqa.selenium.interactions.ClickAction;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
