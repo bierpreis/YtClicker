@@ -29,8 +29,8 @@ public class MainWindow extends JFrame {
 
         JLabel linkInputLabel = new JLabel("put link here:");
         JLabel counterLabel = new JLabel("iterations");
-        JLabel timeInputLabel = new JLabel("time in seconds");
-        JLabel waitTimeInputLabel = new JLabel("max random wait time");
+        JLabel timeInputLabel = new JLabel("time in seconds watching the video");
+        JLabel waitTimeInputLabel = new JLabel("max random wait time until next watch");
 
 
         counterPanel.add(counterLabel);
@@ -89,7 +89,10 @@ public class MainWindow extends JFrame {
                 WebDriver driver = new FirefoxDriver();
 
                 driver.get(link);
+
                 try {
+                    Thread.sleep(waitTimeInputField.getWaitTime()*1000);
+                    System.out.println("sleeped " );
                     Thread.sleep(getRandomTime(maxWaitTime * 1000));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -113,7 +116,7 @@ public class MainWindow extends JFrame {
     public String getGeckoPath() {
         JFileChooser chooser = new JFileChooser();
         //FileNameExtensionFilter filter = new FileNameExtensionFilter(
-         //       "JPG & GIF Images", "jpg", "gif", "exe");
+        //       "JPG & GIF Images", "jpg", "gif", "exe");
         //chooser.setFileFilter(filter);
         int returnVal = chooser.showDialog(new JFrame(), "Select Gecko Driver");
         if (returnVal == JFileChooser.APPROVE_OPTION) {
