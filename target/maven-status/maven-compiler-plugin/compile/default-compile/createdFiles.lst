@@ -1,3 +1,4 @@
+gui/GeckoWarningWindow$OkButtonListener.class
 gui/StartButton.class
 gui/MainWindow$ClickIteration.class
 gui/TimeInputField.class
@@ -10,3 +11,4 @@ gui/WaitTimeInputField.class
 gui/GeckoFileChooser.class
 gui/StartButton$1.class
 gui/CounterInputField.class
+gui/GeckoWarningWindow.class

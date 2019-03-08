@@ -54,7 +54,7 @@ public class MainWindow extends JFrame {
         add(linkDescriptionPanel);
         add(linkInputPanel);
 
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
 
         setVisible(true);
@@ -85,14 +85,20 @@ public class MainWindow extends JFrame {
             System.setProperty("webdriver.gecko.driver", pathToGecko);
             for (int iterationCounter = 0; iterationCounter < requesdedIterations; iterationCounter++) {
                 System.out.println("iteration: " + iterationCounter);
+                WebDriver driver = null;
 
-                WebDriver driver = new FirefoxDriver();
+                try {
+                    driver = new FirefoxDriver();
+                } catch (IllegalStateException e) {
+                    new GeckoWarningWindow();
+                    return;
+                }
 
                 driver.get(link);
 
                 try {
-                    Thread.sleep(waitTimeInputField.getWaitTime()*1000);
-                    System.out.println("sleeped " );
+                    Thread.sleep(waitTimeInputField.getWaitTime() * 1000);
+                    System.out.println("sleeped ");
                     Thread.sleep(getRandomTime(maxWaitTime * 1000));
                 } catch (InterruptedException e) {
                     e.printStackTrace();
